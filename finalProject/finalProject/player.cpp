@@ -29,7 +29,7 @@
 	void Player::setSide(Side side){
 		plyrSde=side;
 	}
-	std::ostream& operator<<(std::ostream& out, const Player& f){//in this finction impotant to toggle activeness at end of game
+	inline std::ostream& operator<<(std::ostream& out, const Player& f){//in this finction impotant to toggle activeness at end of game
 	if (f.isActive()==1){
 		out << f.getName() << ": " << f.getSide() << "(ative)" << endl; 
 	}else{
