@@ -2,7 +2,11 @@
 #include <iostream>
 #include <string>
 
+enum FaceAnimal {penguin,seal,turtle,crab,octopus};
+enum FaceBackground {green, red, pink, blue, yellow};
+
 class Card {
+	
 	Card(FaceAnimal _animal, FaceBackground _background);
 	
 public:
