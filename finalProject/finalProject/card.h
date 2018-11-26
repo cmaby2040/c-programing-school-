@@ -1,21 +1,45 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <stdio.h>
+using std::string;
+using std::cout;
+using std::cin;
+#ifndef CARD_H
+#define CARD_H
 
-enum FaceAnimal {penguin,seal,turtle,crab,octopus};
-enum FaceBackground {green, red, pink, blue, yellow};
-
+class CardDeck;
 class Card {
-	
-	Card(FaceAnimal _animal, FaceBackground _background);
-	
 public:
-	//convert this to FaceAnimal
-	operator cardToFaceAnimal();
-	//convert this to FaceBackground
-	operator cardToFaceBackground();
-	//return number of rows
+	//FaceAnimal enumerations
+	enum FaceAnimal {
+		Penguin, Sheep, Donkey, Fish, Gorilla
+	};
+	//FaceBackground enumerations
+	enum FaceBackground {
+		red, orange, yellow, green, blue
+	};
+	//row string operator
+	string operator() (int _row) const;
+	//FaceAnimal and FaceBackground Operators
+	operator FaceAnimal() const;
+	operator FaceBackground() const;
+private:
+	friend class CardDeck;
+	//variables
+	const int numRows = 3;
+	FaceAnimal animal;
+	FaceBackground background;
+	std::string* row;
+	//return num of rows
 	int getNRows();
-	//row to string
-	std::string c(int _row);
+	//return animal character
+	char getAnimal() const;
+	//return color ccharacter
+	char getColor() const;
+	//ctor
+	Card(FaceAnimal _animal, FaceBackground _background);
+	//dtor
+	~Card();
 };
+#endif
