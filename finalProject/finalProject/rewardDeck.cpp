@@ -13,8 +13,8 @@ using std::cin;
 using std::endl;
 using std::array;
 
-static array<Reward*, 7> deck;
-static RewardDeck rewardDeck;
+array<Reward*, 7> RewardDeck::deck;
+RewardDeck RewardDeck::rewardDeck;
 
 
 void RewardDeck::shuffle()

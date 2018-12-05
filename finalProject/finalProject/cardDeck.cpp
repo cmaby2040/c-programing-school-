@@ -13,15 +13,14 @@ using std::endl;
 using std::array;
 
 //static array deck
-static array<Card*, 25> deck;
+array<Card*, 25> CardDeck::deck;
 //size
 static int size;
 //static cardDeck
-static CardDeck cardDeck;
+CardDeck CardDeck::cardDeck;
 
 CardDeck & CardDeck::make_CardDeck()
 {
-	cardDeck = CardDeck();
 	int count=0;
 	for (int i = Card::FaceAnimal::Penguin; i != Card::FaceAnimal::Gorilla; i++) {
 		Card::FaceAnimal _animal = static_cast<Card::FaceAnimal>(i);
