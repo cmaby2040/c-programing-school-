@@ -7,7 +7,10 @@
 #include "deck.h"
 #include "reward.h"
 
-using namespace std;
+using std::string;
+using std::cout;
+using std::cin;
+using std::array;
 
 #ifndef REWARDDECK_H
 #define REWARDDECK_H
@@ -15,7 +18,8 @@ class RewardDeck : public Deck<Reward> {
 public:
 	friend class Reward;
 	//variables
-	static array<Reward*, 7> rewardDeck;
+	static array<Reward*, 7> deck;
+	static RewardDeck rewardDeck;
 	static int size;
 	//make deck method
 	static RewardDeck& make_RewardDeck();
@@ -23,11 +27,11 @@ public:
 	void shuffle();
 	Reward* getNext() const;
 	bool isEmpty() const;
-
-private:
-	//ctor
-	RewardDeck();
 	//dtor
 	~RewardDeck();
+private:
+	//ctor
+	RewardDeck()=default;
+	
 };
 #endif

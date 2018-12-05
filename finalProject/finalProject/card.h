@@ -13,17 +13,28 @@ class Card {
 public:
 	//FaceAnimal enumerations
 	enum FaceAnimal {
-		Penguin, Sheep, Donkey, Fish, Gorilla
+		Penguin=0, 
+		Sheep, 
+		Donkey, 
+		Fish, 
+		Gorilla
 	};
+	
 	//FaceBackground enumerations
 	enum FaceBackground {
-		red, orange, yellow, green, blue
+		red=0, 
+		orange, 
+		yellow, 
+		green, 
+		blue
 	};
 	//row string operator
 	string operator() (int _row) const;
 	//FaceAnimal and FaceBackground Operators
 	operator FaceAnimal() const;
 	operator FaceBackground() const;
+	//dtor
+	~Card();
 private:
 	friend class CardDeck;
 	//variables
@@ -39,7 +50,5 @@ private:
 	char getColor() const;
 	//ctor
 	Card(FaceAnimal _animal, FaceBackground _background);
-	//dtor
-	~Card();
 };
 #endif

@@ -1,12 +1,16 @@
 #pragma once
+
 #include <stdio.h>
 #include <iostream>
 #include <string>
 #include <array>
-#include "Card.h"
-#include "Deck.h"
+#include "card.h"
+#include "deck.h"
 
-using namespace std;
+using std::string;
+using std::cout;
+using std::cin;
+using std::array;
 
 #ifndef CARDDECK_H
 #define	CARDDECK_H
@@ -18,7 +22,6 @@ public:
 	static array<Card*, 25> deck;
 	//size
 	static int size;
-
 	//static cardDeck
 	static CardDeck cardDeck;
 	//only public method: make_CardDeck method
@@ -27,11 +30,10 @@ public:
 	void shuffle();
 	Card* getNext()const;
 	bool isEmpty()const;
-
-private:
-	//ctor
-	CardDeck();
 	//dtor
 	~CardDeck();
+private:
+	//ctor
+	CardDeck()=default;
 };
 #endif

@@ -1,9 +1,11 @@
 #pragma once
+
 #include <stdio.h>
 #include <iostream>
 
-using namespace std;
-
+using std::string;
+using std::cout;
+using std::cin;
 #ifndef DECK_H
 #define DECK_H
 
@@ -16,5 +18,7 @@ public:
 	virtual C* getNext() const=0;
 	//returns true if deck is empty, else return false
 	virtual bool isEmpty() const=0;
+	//dtor
+	virtual ~Deck() {};
 };
 #endif
