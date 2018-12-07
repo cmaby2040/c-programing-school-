@@ -44,7 +44,6 @@ CardDeck & CardDeck::make_CardDeck()
 	return deckCard;
 }
 
-// NEED TO CHANGE ************************************************************
 void CardDeck::shuffle()
 {
 	std::random_shuffle(&cDeck[1], &cDeck[25]);

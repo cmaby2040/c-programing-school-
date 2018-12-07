@@ -345,7 +345,7 @@ ostream & operator<<(ostream & _oStream, const Board & _board)
 /* TESTTESTTEST*/
 int main() {
 	CardDeck _c = CardDeck::make_CardDeck();
-	//_c.shuffle();
+	_c.shuffle();
 	CardDeck * c = &_c;
 	Board _board = Board(c);
 	cout << _board << endl << endl;
