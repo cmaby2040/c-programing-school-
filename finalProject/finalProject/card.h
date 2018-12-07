@@ -12,7 +12,7 @@ class CardDeck;
 class Card {
 public:
 	//FaceAnimal enumerations
-	enum FaceAnimal {
+	enum class FaceAnimal {
 		Penguin=0, 
 		Sheep, 
 		Donkey, 
@@ -21,13 +21,15 @@ public:
 	};
 	
 	//FaceBackground enumerations
-	enum FaceBackground {
+	enum class FaceBackground {
 		red=0, 
 		orange, 
 		yellow, 
 		green, 
 		blue
 	};
+
+	
 	//row string operator
 	string operator() (int _row) const;
 	//FaceAnimal and FaceBackground Operators
@@ -41,7 +43,7 @@ private:
 	const int numRows = 3;
 	FaceAnimal animal;
 	FaceBackground background;
-	std::string* row;
+	std::string row = "";
 	//return num of rows
 	int getNRows();
 	//return animal character
@@ -50,5 +52,6 @@ private:
 	char getColor() const;
 	//ctor
 	Card(FaceAnimal _animal, FaceBackground _background);
+	Card() = default;
 };
 #endif

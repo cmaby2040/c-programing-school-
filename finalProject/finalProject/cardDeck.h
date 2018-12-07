@@ -19,11 +19,11 @@ class CardDeck : public Deck<Card> {
 public:
 	friend class Card;
 	//static array deck
-	static array<Card*, 25> deck;
+	static array<Card*, 26> cDeck;
 	//size
-	static int size;
+	static int cSize;
 	//static cardDeck
-	static CardDeck cardDeck;
+	static CardDeck deckCard;
 	//only public method: make_CardDeck method
 	static CardDeck& make_CardDeck();
 	//deck methods

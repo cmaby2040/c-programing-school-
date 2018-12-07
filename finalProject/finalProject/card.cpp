@@ -6,38 +6,52 @@ using std::string;
 using std::cout;
 using std::cin;
 
+
 int Card::getNRows() {
 	return this->numRows;
 }
 char Card::getAnimal() const {
 	char a;
-	if (this->animal == Penguin) a = 'P';
-	else if (this->animal == Sheep) a = 'S';
-	else if (this->animal == Donkey) a = 'D';
-	else if (this->animal == Gorilla) a = 'G';
-	else if (this->animal== Fish) a = 'F';
-
+	//check each case
+	if (this->animal == Card::FaceAnimal::Penguin) a = 'P';
+	else if (this->animal == Card::FaceAnimal::Sheep) a = 'S';
+	else if (this->animal == Card::FaceAnimal::Donkey) a = 'D';
+	else if (this->animal == Card::FaceAnimal::Gorilla) a = 'G';
+	else if (this->animal== Card::FaceAnimal::Fish) a = 'F';
+	//return char a
 	return a;
 }
 
 char Card::getColor() const {
 	char c;
-	if (this->background==red) c='R';
-	else if (this->background == orange) c = 'O';
-	else if (this->background == yellow) c = 'Y';
-	else if (this->background == green) c = 'G';
-	else if (this->background == blue) c = 'B';
-
+	//check each case
+	if (this->background == Card::FaceBackground::red) c='R';
+	else if (this->background == Card::FaceBackground::orange) c = 'O';
+	else if (this->background == Card::FaceBackground::yellow) c = 'Y';
+	else if (this->background == Card::FaceBackground::green) c = 'G';
+	else if (this->background == Card::FaceBackground::blue) c = 'B';
+	//return char c
 	return c;
 }
 
 Card::Card(FaceAnimal _animal, FaceBackground _background) : 
-	animal{ _animal }, background{_background}{
+	animal{ _animal }, background{ _background }{
+	//get char of animal and color
 	char _color = this->getColor();
 	char _animalType = this->getAnimal();
-	*row = { _color, _color, _color };
-	*(row+1)= { _color, _animalType, _color };
-	*(row+2)= { _color, _color, _color };
+	//set string values
+	std::string temp;
+	temp += _color;
+	temp += _color;
+	temp += _color;
+	temp += _color;
+	temp += _animalType;
+	temp += _color;
+	temp += _color;
+	temp += _color;
+	temp += _color;
+	//set row value
+	row = temp;
 }
 
 Card::~Card()
@@ -45,15 +59,20 @@ Card::~Card()
 }
 
 string Card::operator()(int _rowNum) const {
-	string _rowString = *(row + _rowNum);
+	string _rowString;
+	//set each row for the string
+	for (int i = 0; i < 3; i++) {
+		_rowString += row[3*_rowNum+i];
+	}
 	return _rowString;
 }
 
+//animal operator
 Card::operator FaceAnimal() const {
 	return animal;
 }
 
+//color operator
 Card::operator FaceBackground() const {
 	return background;
 }
-
