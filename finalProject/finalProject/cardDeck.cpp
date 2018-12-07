@@ -47,11 +47,8 @@ CardDeck & CardDeck::make_CardDeck()
 // NEED TO CHANGE ************************************************************
 void CardDeck::shuffle()
 {
-	for (int i = 0; i < 25; i++) {
-		int r = rand() % 25; // random variable 
-		//temp=a, a=b, b=a
-		Card* temp = cDeck[i]; cDeck[i] = cDeck[r]; cDeck[r] = temp; 
-	}
+	std::random_shuffle(&cDeck[1], &cDeck[25]);
+	
 	//deck is now shuffled
 }
 
