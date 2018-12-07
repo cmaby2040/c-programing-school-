@@ -1,4 +1,5 @@
 #include "player.h"
+#include "reward.h"
 #include <string>
 #include <iostream>
 	using std::string;
@@ -6,7 +7,7 @@
 	using std::endl;
 	Player::Player(string name, bool activ, int rub, Side playerSide): name{name},active{activ},rubies{rub}, plyrSde{playerSide}{}
 	
-	Player::Player(): name{"noName"}, active{true}, rubies{0}, plyrSde{Side::defaultplayer}{}
+	Player::Player(): name{"noName"}, active{true}, rubies{0}{}
 	
 	string Player::getName() const {
 		return name;
@@ -20,9 +21,9 @@
 	int Player::getNrubies() const{
 		return rubies;
 	}
-	//void Player::addReward(const Reward& r){
-		// rubies= some value
-//  }
+	void Player::addReward(const Reward& r){
+		rubies += static_cast<int>(r);
+	}
 	Side Player::getSide() const{//this print out needs work
 		return plyrSde;
 	}
@@ -30,15 +31,23 @@
 		plyrSde=side;
 	}
 	inline std::ostream& operator<<(std::ostream& out, const Player& f){//in this finction impotant to toggle activeness at end of game
+	string s;
+	int i = static_cast<int>(f.getSide());
+	switch (i) {
+        //case Side::defaultplayer: s="defaultplayer"; break;
+        case 0: s= "top"; break;
+        case 1: s= "bottom"; break;
+        case 2: s= "left"; break;
+        case 3: s= "right"; break;
+}
 	if (f.isActive()==1){
-		out << f.getName() << ": " << f.getSide() << "(ative)" << endl; 
+		out << f.getName() << ": " << s << "(ative)" << endl; 
 	}else{
 	
 	out << f.getName() << ": " << f.getNrubies() << " rubies" << endl;
 	}
 	return out;
 }
-
 /*
 	int main(){
 		Player p1();
