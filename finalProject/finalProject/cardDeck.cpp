@@ -54,26 +54,19 @@ void CardDeck::shuffle()
 Card * CardDeck::getNext() const
 {
 	//if not empty
-	if (!this->isEmpty()) {
-		int i = 0;
-		//check to see if deck at i==nullptr
-		while (cDeck[i] == nullptr) {
-			i++;
-		}
-		Card* temp = cDeck[i];
-		//set element to null after getting next
-		cDeck[i-1] = nullptr;
-		return temp;
-		cSize--;
+	if (cSize<2) {
+		return nullptr;
 	}
-	//print in case no more cards
-	cout << "no more cards" << endl;
-	return nullptr;
+	else{
+		int temp = 26 - cSize;
+		cSize--;
+		return cDeck[temp];
+	}
 }
 
 bool CardDeck::isEmpty() const
 {
-	if (cSize == 0) return true;
+	if (cSize <2) return true;
 	return false;
 
 }

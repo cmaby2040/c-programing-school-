@@ -17,21 +17,20 @@ using std::array;
 class RewardDeck : public Deck<Reward> {
 public:
 	friend class Reward;
+	//make deck method
+	static RewardDeck& make_RewardDeck();
+	//redefine deck methods
+private:
+	//ctor
+	RewardDeck()=default;
 	//variables
 	static array<Reward*, 7> deck;
 	static RewardDeck rewardDeck;
 	static int size;
-	//make deck method
-	static RewardDeck& make_RewardDeck();
-	//redefine deck methods
 	void shuffle();
 	Reward* getNext() const;
 	bool isEmpty() const;
 	//dtor
 	~RewardDeck();
-private:
-	//ctor
-	RewardDeck()=default;
-	
 };
 #endif

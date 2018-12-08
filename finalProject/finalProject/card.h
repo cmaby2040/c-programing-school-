@@ -13,20 +13,20 @@ class Card {
 public:
 	//FaceAnimal enumerations
 	enum class FaceAnimal {
-		Penguin=0, 
-		Sheep, 
-		Donkey, 
-		Fish, 
-		Gorilla
+		crab=0, 
+		penguin, 
+		octopus, 
+		turtle, 
+		walrus
 	};
 	
 	//FaceBackground enumerations
 	enum class FaceBackground {
 		red=0, 
-		orange, 
-		yellow, 
 		green, 
-		blue
+		purple, 
+		blue, 
+		yellow
 	};
 
 	

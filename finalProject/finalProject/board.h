@@ -28,12 +28,6 @@ public:
 		_4, 
 		_5
 	};
-	//deck for board
-	static CardDeck* deckBoard;
-	//array holds status
-	static array <string, 19> board;
-	//holds card status if up==true, down==false
-	static array <bool, 25> cardIsUp;
 
 	//METHODS
 	//reveals if face up
@@ -57,6 +51,12 @@ public:
 	Board(CardDeck* _cardDeck);
 	//dtor
 	~Board();
-
+private:
+	static array <string, 19> board;
+	//deck for board
+	static CardDeck* deckBoard;
+	//array holds status
+	//holds card status if up==true, down==false
+	static array <bool, 25> cardIsUp;
 };
 #endif

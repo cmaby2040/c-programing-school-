@@ -17,6 +17,7 @@ using std::array;
 
 class CardDeck : public Deck<Card> {
 public:
+
 	friend class Card;
 	//static array deck
 	static array<Card*, 26> cDeck;
@@ -35,5 +36,7 @@ public:
 private:
 	//ctor
 	CardDeck()=default;
+	
+
 };
 #endif

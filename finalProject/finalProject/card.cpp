@@ -13,11 +13,11 @@ int Card::getNRows() {
 char Card::getAnimal() const {
 	char a;
 	//check each case
-	if (this->animal == Card::FaceAnimal::Penguin) a = 'P';
-	else if (this->animal == Card::FaceAnimal::Sheep) a = 'S';
-	else if (this->animal == Card::FaceAnimal::Donkey) a = 'D';
-	else if (this->animal == Card::FaceAnimal::Gorilla) a = 'G';
-	else if (this->animal== Card::FaceAnimal::Fish) a = 'F';
+	if (this->animal == Card::FaceAnimal::crab) a = 'C';
+	else if (this->animal == Card::FaceAnimal::penguin) a = 'P';
+	else if (this->animal == Card::FaceAnimal::octopus) a = 'O';
+	else if (this->animal == Card::FaceAnimal::turtle) a = 'T';
+	else if (this->animal== Card::FaceAnimal::walrus) a = 'W';
 	//return char a
 	return a;
 }
@@ -26,10 +26,10 @@ char Card::getColor() const {
 	char c;
 	//check each case
 	if (this->background == Card::FaceBackground::red) c='R';
-	else if (this->background == Card::FaceBackground::orange) c = 'O';
-	else if (this->background == Card::FaceBackground::yellow) c = 'Y';
 	else if (this->background == Card::FaceBackground::green) c = 'G';
+	else if (this->background == Card::FaceBackground::purple) c = 'P';
 	else if (this->background == Card::FaceBackground::blue) c = 'B';
+	else if (this->background == Card::FaceBackground::yellow) c = 'Y';
 	//return char c
 	return c;
 }

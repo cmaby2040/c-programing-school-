@@ -19,12 +19,9 @@ RewardDeck RewardDeck::rewardDeck;
 
 void RewardDeck::shuffle()
 {
-		for (int i = 0; i < 7; i++) {
-			int r = rand() % 7; // random variable 
-			//temp=a, a=b, b=a
-			Reward* temp = this->deck[i]; this->deck[i] = this->deck[r]; this->deck[r] = temp;
-		}
-		//rewarddeck is now shuffled
+	std::random_shuffle(&deck[1], &deck[7]);
+
+	//deck is now shuffled
 }
 
 RewardDeck & RewardDeck::make_RewardDeck()

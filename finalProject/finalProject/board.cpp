@@ -150,7 +150,7 @@ Card * Board::getCard(const Letter & _letter, const Number & _number) const
 	if (n > 12) n--;
 	try {
 		//check if in bounds
-		if ((_letter > 4 || _letter < 0) && (_number > 4 || _number < 0)) {
+		if (((_letter > 4 || _letter < 0) && (_number > 4 || _number < 0)) || (_letter == 2 && _number == 2)) {
 			throw "OutOfRange";
 		}
 		//return the desired card
@@ -215,6 +215,7 @@ void Board::reset()
 	for (int i = 0; i < 25; i++) {
 		Board::cardIsUp[i] = false;
 	}
+	Board::deckBoard->cSize = 25;
 	int group = 0;
 	//set 19 strings to empty strings
 	for (int i = 0; i < 19; i++) {
@@ -317,7 +318,10 @@ Board::Board(CardDeck* _cardDeck) {
 			}
 			group += 4;
 		}
+
+
 	}
+	
 	//catch block
 	catch (NoMoreCards& e) {
 		cout << "No more cards!" << e.what() << endl;
@@ -326,7 +330,6 @@ Board::Board(CardDeck* _cardDeck) {
 
 Board::~Board()
 {
-	deckBoard->~CardDeck();
 }
 
 
@@ -335,19 +338,31 @@ ostream & operator<<(ostream & _oStream, const Board & _board)
 {
 	//for each string in board array print it then go to next line
 	string temp;
+	int count = 0;
+	char a[5] = { 'A','B','C','D','E' };
 	for (int i = 0; i < 19; i++) {
 		temp = _board.board[i];
-		_oStream << temp << endl;
+		if ((i + 3) % 4 == 0) {
+			_oStream << a[count] << " " << temp << endl;
+			count++;
+		}
+		else {
+			_oStream << "  " << temp << endl;
+		}
 	}
+	_oStream << endl << "   1   2   3   4   5";
 	return _oStream;
 }
 
 /* TESTTESTTEST*/
+
+
 int main() {
 	CardDeck _c = CardDeck::make_CardDeck();
 	_c.shuffle();
 	CardDeck * c = &_c;
 	Board _board = Board(c);
+
 	cout << _board << endl << endl;
 	_board.turnFaceUp(Board::Letter::B, Board::Number::_5);
 	_board.turnFaceUp(Board::Letter::A, Board::Number::_4);
