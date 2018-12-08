@@ -26,7 +26,7 @@ private:
 	const Card *currentCard;
 public:
 	static int numPlayers;
-	static array<Player, 4> players;
+	static array<Player*, 4> players;
 	//ctor
 	Game();
 	//return round number

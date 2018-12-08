@@ -43,11 +43,11 @@ std::ostream& operator<<(std::ostream& out, const Player& f) {//in this function
 	case 3: s = "right"; break;
 	}
 	if (f.isActive() == 1) {
-		out << f.getName() << ": " << s << "(active)" << endl;
+		out << f.getName() << ": " << s << "(active)" ;
 	}
 	else {
 
-		out << f.getName() << ": " << f.getNrubies() << " rubies" << endl;
+		out << f.getName() << ": " << f.getNrubies() << " rubies";
 	}
 	return out;
 }
@@ -63,11 +63,11 @@ Player& Player::operator=(const Player& p) {
 /*
 	int main(){
 		Player p1();
-		Player p2("christopher" , false, 3, Side::defaultplayer);
-		Player p3("christopher", true, 3, Side::left);
+		Player p2("christopher" , false, 3, Player::Side::top);
+		Player p3("christopher", true, 3, Player::Side::left);
 		cout << p2.getName() << " " << p2.getNrubies() << " " << p2.getSide() << " " << p2.isActive()<< endl;
 		cout << p2 << p3;
-		p2.setSide(Side::bottom);
+		p2.setSide(Player::Side::bottom);
 		cout << p2;
 		p2.setActive(1);//changes the output type to name: side(active)
 		cout << p2;
@@ -75,4 +75,5 @@ Player& Player::operator=(const Player& p) {
 
 
 	}
+	
 	*/

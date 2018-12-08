@@ -13,7 +13,7 @@ int Game::numPlayers=0;
 CardDeck Game::_c = CardDeck::make_CardDeck();
 CardDeck* Game::c = &_c;
 Board Game::gameBoard = Board(c);
-std::array<Player , 4> Game::players;
+std::array<Player *, 4> Game::players;
 //starts the game, sets the board
 Game::Game()
 {
@@ -51,13 +51,15 @@ void Game::nextRound()
 
 void Game::addPlayer(const Player & _player)
 {
+	//get the player enum
 	int i=static_cast<int>(_player.getSide());
-	if (players[i].getName() == "noName" ) {
+	//if no player at spot
+	if (players[i] == nullptr) {
 		//set player
-//		Player p = _player;
-		players[i] = _player;
+		players[i] = new Player(_player);
 	}
-	players[i].setActive(true);
+	//set that guy to true
+	players[i]->setActive(true);
 	//increment numplayers
 	numPlayers++;
 }
@@ -65,7 +67,7 @@ void Game::addPlayer(const Player & _player)
 Player & Game::getPlayer(Player::Side _side) const
 {
 	int i = static_cast<int>(_side);
-	return players[i];
+	return *(players[i]);
 }
 
 const Card * Game::getPreviousCard() const
@@ -95,8 +97,6 @@ void Game::setCurrentCard(const Card * _card)
 			if (animal == tempAnimal && background == tempBackground) break;
 		}
 		l = i;
-		
-
 		if (animal == tempAnimal && background == tempBackground) break;
 	}
 	Board::Letter _l = static_cast<Board::Letter> (l);
@@ -129,31 +129,20 @@ Game::~Game()
 
 ostream & operator<<(ostream & _oStream, const Game & _game)
 {
-	_oStream << _game.gameBoard;
-	Player p1 = _game.players[0];
+	_oStream << "                      " << " PLAYER MAP " << endl << endl;
+	if (_game.players[0] != nullptr) { _oStream << "                      " << *_game.players[0] << endl << endl << endl << endl; }
+	if (_game.players[2] != nullptr) { 
+		_oStream << *_game.players[2] << "        " << "BOARD           "; 
+	}
+	else { _oStream << "                          " << "BOARD           "; }
+	if (_game.players[3] != nullptr) {
+		_oStream << *_game.players[3] << endl << endl << endl << endl;
+	}
+	else { _oStream << endl << endl << endl << endl; }
+	if (_game.players[1] != nullptr) _oStream << "                      " << *_game.players[1] << endl << endl << endl << endl;
 
-	string s;
-	int i = static_cast<int>(p1.getSide());
-	cout << endl << "****" << endl << i;
-	switch (i) {
-		//case Side::defaultplayer: s="defaultplayer"; break;
-	case 0: s = "top"; break;
-	case 1: s = "bottom"; break;
-	case 2: s = "left"; break;
-	case 3: s = "right"; break;
-	}
-	if (p1.isActive() == 1) {
-		_oStream << p1.getName() << ": " << s << "(active)" << endl;
-	}
-	else {
-
-		_oStream << p1.getName() << ": " << p1.getNrubies() << " rubies" << endl;
-	}
+	_oStream << _game.gameBoard << endl;
 	
-	//_oStream << _game.players[0] << endl;
-	//_oStream << _game.players[1] << endl;
-	//_oStream << _game.players[2] << endl;
-	//_oStream << _game.players[3] << endl;
 
 	return _oStream;
 }
