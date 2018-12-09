@@ -16,6 +16,7 @@ using std::array;
 array<Card*, 26> CardDeck::cDeck;
 //size
 int CardDeck::cSize = 25;
+int CardDeck::size = 1;
 //static cardDeck
 CardDeck CardDeck::deckCard;
 
@@ -56,14 +57,14 @@ void CardDeck::shuffle()
 Card * CardDeck::getNext() const
 {
 	//if not empty
-	if (cSize<2) {
-		return nullptr;
+	if (size == 24) {
+		size = 1;
 	}
-	else{
-		int temp = 26 - cSize;
-		cSize--;
-		return cDeck[temp];
+	else {
+		size++;
 	}
+
+	return cDeck[size];
 }
 
 bool CardDeck::isEmpty() const
@@ -76,6 +77,31 @@ bool CardDeck::isEmpty() const
 CardDeck::~CardDeck()
 {
 	for (int i = 0; i < 25; i++) {
-		delete this->cDeck[i];
+		delete[] cDeck[i];
 	}
 }
+/*
+int main() {
+	cout << "Card Deck test" << endl;
+	cout << "initilization of the deck" << endl;
+	CardDeck rew = CardDeck::make_CardDeck();
+	cout << "------is empty test---------" << endl;
+	cout << rew.isEmpty() << endl;
+	cout << "------getNext test---------" << endl;
+	for (int i = 0; i < 30; i++) {
+		cout << *(rew.getNext());
+		cout << "card: " << i+1 << endl;
+	}
+	return 0;
+
+	CardDeck rew2 = CardDeck::make_CardDeck();
+	cout << "------shuffle test---------" << endl;
+	rew2.shuffle();
+	for (int i = 0; i < 30; i++) {
+		cout << *(rew.getNext());
+		cout << "card: " << i + 1 << endl;
+	}
+	return 0;
+
+}
+//*/

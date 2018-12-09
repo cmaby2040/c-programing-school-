@@ -6,6 +6,7 @@
 #include <exception>
 #include "board.h"
 #include "player.h"
+#include "rewardDeck.h"
 
 #ifndef GAME_H
 #define GAME_H
@@ -21,12 +22,11 @@ private:
 	static CardDeck _c;
 	static CardDeck * c;
 	static Board gameBoard;
-	static int round;
-	static RewardDeck _r;
-	static RewardDeck* r;
-	//const Reward * prevReward;
+	static int round;;
 	const Reward * currentReward;
 public:
+	static RewardDeck _r;
+	static RewardDeck* r;
 	static int numPlayers;
 	static array<Player*, 4> players;
 	const Card * prevCard;
@@ -38,6 +38,7 @@ public:
 	//set state to next rd
 	void nextRound();
 	Board getGameBoard();
+	RewardDeck* getRewardDeck();
 	//add player
 	void addPlayer(const Player&);
 	//get player at enum side

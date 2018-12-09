@@ -28,17 +28,16 @@ Game::Game()//no longer shuffle
 	_c.shuffle();
 	Game::c = &_c;
 	Game::gameBoard = Board(c);
-	Game::_r = CardDeck::make_CardDeck();
+	Game::_r = RewardDeck::make_RewardDeck();
 	_r.shuffle();
-	Game::r = &_r;
 	Game::gameBoard = Board(c);
 	Game::round = 0;
 	Game::numPlayers = 0;
 	const Card * prevCard = nullptr;
 	const Card * currentCard = nullptr;
 }
-RewardDeck& Game::getRewardDeck() {//fix the reward stuff
-	return _r;
+RewardDeck* Game::getRewardDeck() {//fix the reward stuff
+	return r;
 }
 //returns which round
 int Game::getRound() const
@@ -56,9 +55,9 @@ void Game::nextRound()
 	//increment
 	round++;
 	//reset
-	gameBoard.reset();
+	//gameBoard.reset();
 	//print
-	cout << endl << gameBoard <<endl << endl;
+	//cout << endl << gameBoard <<endl << endl;
 }
 
 void Game::addPlayer(const Player & _player)
@@ -195,8 +194,13 @@ int main() {
 	g1.addPlayer(p2);
 	g1.addPlayer(p3);
 	cout << g1;
-
-
+	cout << "-------------test addReward--------------" << endl;
+	Reward* r1 = g1.getRewardDeck()->getNext();
+	g1.getPlayer(Player::Side::top).addReward(*r1);
+	cout << *r1;
+	g1.getPlayer(Player::Side::top).setActive(false);
+	cout << g1.getPlayer(Player::Side::top) << endl;
+	/*
 	//int firstPerson = 0;
 	bool doneLoop = false;
 	for (int i = 0; i < 10; ++i) {
@@ -239,7 +243,7 @@ int main() {
 		else if (coords[1] == '5') {
 			number = Board::Number::_5;
 		}
-			
+
 		cout << letter << " " << number << endl;
 		g1.getGameBoard().turnFaceUp(letter, number);
 		Card* c = g1.getCard(letter, number);

@@ -39,7 +39,7 @@ public:
 	//throws exception OutOfRange if invalid combo
 	bool turnFaceDown(const Letter& _letter, const Number& _number)const;//good
 	//gets card by reference
-	Card* getCard(const Letter& _letter, const Number& _number) const;// what does this do?
+	Card* getCard(const Letter& _letter, const Number& _number) const;
 	//sets card
 	void setCard(const Letter& _letter, const Number& _number, Card* _card) const;// what do these do?
 	//turns cards face down

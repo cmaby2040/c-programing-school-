@@ -9,15 +9,13 @@ using std::ostream;
 using std::string;
 using std::cout;
 using std::cin;
-#ifndef REWARD_H
-#define REWARD_H
 //declare RewardDeck
 class RewardDeck;
 class Reward {
 public:
 	//ruby enumerator
 	enum Rubies {
-		one=0, 
+		one=1, 
 		two, 
 		three, 
 		four
@@ -35,4 +33,3 @@ private:
 	//ostream operator
 	friend ostream& operator<<(ostream& _oStream, const Reward& _reward);
 };
-#endif

@@ -165,15 +165,20 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="board.cpp" />
+    <ClCompile Include="BoardTest.cpp" />
     <ClCompile Include="card.cpp" />
     <ClCompile Include="cardDeck.cpp" />
+    <ClCompile Include="CardDeckTest.cpp" />
     <ClCompile Include="finalProject.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="GameTest.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="playervalidationloop.cpp" />
     <ClCompile Include="reward.cpp" />
     <ClCompile Include="rewardDeck.cpp" />
     <ClCompile Include="rules.cpp" />
+    <ClCompile Include="rewardDeckTest.cpp" />
+    <ClCompile Include="rulesTest.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

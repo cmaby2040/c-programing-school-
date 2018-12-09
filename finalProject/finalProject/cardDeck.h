@@ -23,6 +23,7 @@ public:
 	static array<Card*, 26> cDeck;
 	//size
 	static int cSize;
+	static int size;
 	//static cardDeck
 	static CardDeck deckCard;
 	//only public method: make_CardDeck method

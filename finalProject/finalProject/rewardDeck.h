@@ -20,9 +20,9 @@ public:
 	//make deck method
 	static RewardDeck& make_RewardDeck();
 	//redefine deck methods
-	static array<Reward*, 7> deck;
+	static array<Reward*,7> deck;
 	static RewardDeck rewardDeck;
-	static int size;
+	static int size; 
 	void shuffle();
 	Reward* getNext() const;
 	bool isEmpty() const;

@@ -6,20 +6,20 @@
 #include "Card.h"
 #include "Deck.h"
 #include <cstdlib>
-
 using std::string;
 using std::cout;
 using std::cin;
 using std::endl;
 using std::array;
 
-array<Reward*, 7> RewardDeck::deck;
+array<Reward*,7> RewardDeck::deck;
 RewardDeck RewardDeck::rewardDeck;
+int RewardDeck::size = 0;
 
 
 void RewardDeck::shuffle()
 {
-	std::random_shuffle(&deck[1], &deck[7]);
+	std::random_shuffle(&deck[0], &deck[6]);
 
 	//deck is now shuffled
 }
@@ -27,10 +27,10 @@ void RewardDeck::shuffle()
 RewardDeck & RewardDeck::make_RewardDeck()
 {
 	//set rewards for each one
-	Reward::Rubies ruby1 = Reward::Rubies(0);
-	Reward::Rubies ruby2 = Reward::Rubies(1);
-	Reward::Rubies ruby3 = Reward::Rubies(2);
-	Reward::Rubies ruby4 = Reward::Rubies(3);
+	Reward::Rubies ruby1 = Reward::Rubies(1);
+	Reward::Rubies ruby2 = Reward::Rubies(2);
+	Reward::Rubies ruby3 = Reward::Rubies(3);
+	Reward::Rubies ruby4 = Reward::Rubies(4);
 	//set the correct rewards in the deck
 	rewardDeck.deck[0] = new Reward(ruby1);
 	rewardDeck.deck[1] = new Reward(ruby1);
@@ -39,40 +39,60 @@ RewardDeck & RewardDeck::make_RewardDeck()
 	rewardDeck.deck[4] = new Reward(ruby2);
 	rewardDeck.deck[5] = new Reward(ruby3);
 	rewardDeck.deck[6] = new Reward(ruby4);
-
+	
 	return rewardDeck;
 }
-Reward * RewardDeck::getNext() const
+Reward * RewardDeck::getNext() const//with the way that make_RewardDeck is created there is no way for the deck to be empty of not full
 {
+	//Reward* temp;
 	//if not empty
-	if (!this->isEmpty()) {
-		int i = 0;
-		//check to see if deck at i==nullptr
-		while (this->deck[i] != nullptr) {
-			i++;
+		//int i = 0;
+		if (size == 6) {
+			size = 0;
 		}
-		Reward* temp = this->deck[i];
-		//set element to null after getting next
-		this->deck[i] = nullptr;
-		return temp;
-	}
-	cout << "no more rewards" << endl;
-	return nullptr;
+		else {
+			size++;
+		}
+
+		return deck[size];
 }
 
 bool RewardDeck::isEmpty() const
 {
+	bool state = true;
 	for (int i = 0; i < 7; i++) {
-		if (this->deck[i] != nullptr) {
-			return false;
+		if (deck[i] != nullptr) {
+			 return false;
 		}
 	}
-		return true;
+	return state;
 }
 
 RewardDeck::~RewardDeck()
 {
 	for (int i = 0; i < 7; i++) {
-		delete this->deck[i];
+		delete[] deck[i];
 	}
 }
+/*
+int main() {
+	//RewardDeck r();
+	cout << "Reward Deck test" << endl;
+	cout << "initilization of the deck" << endl;
+	RewardDeck rew = RewardDeck::make_RewardDeck();
+	cout << "------is empty test---------" << endl;
+	cout << rew.isEmpty() << endl;
+	cout << "------getNext test---------" << endl;
+	for (int i = 0; i < 10; i++) {
+		cout << *(rew.getNext());
+	}
+	RewardDeck rew2 = RewardDeck::make_RewardDeck();
+	cout << "------shuffle test---------" << endl;
+	rew2.shuffle();
+	for (int i = 0; i < 10; i++) {
+		cout << *(rew.getNext());
+	}
+	return 0;
+}
+//*/
+

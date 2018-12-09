@@ -1,7 +1,9 @@
 #include "card.h"
 #include <string>
 #include <iostream>
-
+#include <stdio.h>
+#include <fstream>
+using std::ostream;
 using std::string;
 using std::cout;
 using std::cin;
@@ -75,4 +77,11 @@ Card::operator FaceAnimal() const {
 //color operator
 Card::operator FaceBackground() const {
 	return background;
+}
+ostream& operator<<(ostream& _oStream, const Card& _card) {
+	_oStream << _card.getColor() << _card.getColor() << _card.getColor() << std::endl;
+	_oStream << _card.getColor() << _card.getAnimal() << _card.getColor() << std::endl;
+	_oStream << _card.getColor() << _card.getColor() << _card.getColor() << std::endl;
+	return _oStream;
+
 }

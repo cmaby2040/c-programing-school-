@@ -14,14 +14,13 @@ Reward::operator int() const
 	return i;
 }
 
-Reward::~Reward()
-{
-	delete this;
+Reward::~Reward() {
+	//delete this;
 }
 
 ostream & operator<<(ostream & _oStream, const Reward & _reward)
 {
-	_oStream << "reward value is" << endl;
+	_oStream << "reward value is: ";
 	_oStream << _reward.rubyValue << endl;
 	return _oStream;
 }

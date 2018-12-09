@@ -2,9 +2,12 @@
 #include <iostream>
 #include <string>
 #include <stdio.h>
+#include <stdio.h>
+#include <fstream>
 using std::string;
 using std::cout;
 using std::cin;
+using std::ostream;
 #ifndef CARD_H
 #define CARD_H
 
@@ -53,5 +56,6 @@ private:
 	//ctor
 	Card(FaceAnimal _animal, FaceBackground _background);
 	Card() = default;
+	friend ostream& operator<<(ostream& _oStream, const Card& _reward);
 };
 #endif
