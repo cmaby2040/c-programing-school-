@@ -21,12 +21,13 @@ public:
 		//some other shit here
 private:
 	string name;
-	bool active;
+	bool active, gameOver;
 	int rubies;
 	Side plyrSde;
+	//static bool getGameOver();
 public:
 	Player();
-	Player(string name, bool activ, int rubies, Side playerside);
+	Player(string name, bool activ, int rubies, Side playerside);// bool gameOver);
 
 	Player(const Player&);
 	friend ostream & operator<<(ostream&, const Player&);

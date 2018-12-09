@@ -22,17 +22,22 @@ private:
 	static CardDeck * c;
 	static Board gameBoard;
 	static int round;
-	const Card * prevCard;
-	const Card *currentCard;
+	static RewardDeck _r;
+	static RewardDeck* r;
+	//const Reward * prevReward;
+	const Reward * currentReward;
 public:
 	static int numPlayers;
 	static array<Player*, 4> players;
+	const Card * prevCard;
+	const Card * currentCard;
 	//ctor
 	Game();
 	//return round number
 	int getRound() const;
 	//set state to next rd
 	void nextRound();
+	Board getGameBoard();
 	//add player
 	void addPlayer(const Player&);
 	//get player at enum side
@@ -42,7 +47,7 @@ public:
 	//get current card
 	const Card* getCurrentCard() const;
 	//set current card
-	void setCurrentCard(const Card* _card);
+	void setCurrentCard(const Card* _card); 
 	//get card
 	Card* getCard(const Board::Letter& _letter, const Board::Number& _number) const;
 	//set card

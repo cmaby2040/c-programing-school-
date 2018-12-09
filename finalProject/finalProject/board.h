@@ -32,18 +32,18 @@ public:
 	//METHODS
 	//reveals if face up
 	//throws exception of type OutOfRange if invalid combo
-	bool isFaceUp(const Letter& _letter, const Number& _number)const;
+	bool isFaceUp(const Letter& _letter, const Number& _number)const;//good
 	//turns card up, if already up return false, else true
-	bool turnFaceUp(const Letter& _letter, const Number& _number)const;
+	bool turnFaceUp(const Letter& _letter, const Number& _number)const;// good
 	//turns card down, false if already down
 	//throws exception OutOfRange if invalid combo
-	bool turnFaceDown(const Letter& _letter, const Number& _number)const;
+	bool turnFaceDown(const Letter& _letter, const Number& _number)const;//good
 	//gets card by reference
-	Card* getCard(const Letter& _letter, const Number& _number) const;
+	Card* getCard(const Letter& _letter, const Number& _number) const;// what does this do?
 	//sets card
-	void setCard(const Letter& _letter, const Number& _number, Card* _card) const;
+	void setCard(const Letter& _letter, const Number& _number, Card* _card) const;// what do these do?
 	//turns cards face down
-	void reset();
+	void reset();//good
 	//output print
 	friend ostream& operator<<(ostream& _oStream, const Board& _board);
 	//ctor 

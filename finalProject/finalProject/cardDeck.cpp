@@ -13,7 +13,7 @@ using std::endl;
 using std::array;
 
 //static array deck
-array<Card*, 26> CardDeck::cDeck ;
+array<Card*, 26> CardDeck::cDeck;
 //size
 int CardDeck::cSize = 25;
 //static cardDeck
@@ -34,13 +34,15 @@ CardDeck & CardDeck::make_CardDeck()
 			count++;			
 		}
 	}
-	/* TESTTESTTEST
-	deckCard.cDeck[25] = new Card(Card::FaceAnimal::Gorilla, Card::FaceBackground::blue);
-	string strTemp = deckCard.cDeck[count]->operator()(0);
-	string strTemp2 = deckCard.cDeck[count]->operator()(1);
-	string strTemp3 = deckCard.cDeck[count]->operator()(2);
-	cout << "******" << endl << strTemp << endl << strTemp2 << endl << strTemp3 << endl << endl;
-	*/
+	/*// TESTTESTTEST
+	for (int i = 0; i < 25; ++i) {
+		//deckCard.cDeck[25] = new Card(Card::FaceAnimal::octopus, Card::FaceBackground::blue);
+		string strTemp = deckCard.cDeck[i]->operator()(0);
+		string strTemp2 = deckCard.cDeck[i]->operator()(1);
+		string strTemp3 = deckCard.cDeck[i]->operator()(2);
+		cout << "******" << endl << strTemp << endl << strTemp2 << endl << strTemp3 << endl << endl;
+	}
+	//*/
 	return deckCard;
 }
 
@@ -73,5 +75,7 @@ bool CardDeck::isEmpty() const
 
 CardDeck::~CardDeck()
 {
-	
+	for (int i = 0; i < 25; i++) {
+		delete this->cDeck[i];
+	}
 }

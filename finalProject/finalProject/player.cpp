@@ -1,13 +1,14 @@
 #include "player.h"
 #include "reward.h"
+#include "rules.h"
 #include <string>
 #include <iostream>
 using std::string;
 using std::cout;
 using std::endl;
-Player::Player(string name, bool activ, int rub, Side playerSide) : name{ name }, active{ activ }, rubies{ rub }, plyrSde{ playerSide }{}
+Player::Player(string name, bool activ, int rub, Side playerSide) : name{ name }, active{ activ }, rubies{ rub }, plyrSde{ playerSide }{gameOver = false; }// gameOver{ gameOver }{}
 
-Player::Player(const Player& p): name{ p.name }, active{ p.active }, rubies{ p.rubies }, plyrSde{ p.plyrSde } {}
+Player::Player(const Player& p): name{ p.name }, active{ p.active }, rubies{ p.rubies }, plyrSde{ p.plyrSde }, gameOver{ gameOver } {}
 
 Player::Player() : name{ "noName" }, active{ true }, rubies{ 0 }{}
 
@@ -32,7 +33,10 @@ Player::Side Player::getSide() const {//this print out needs work
 void Player::setSide(Side side) {
 	plyrSde = side;
 }
-std::ostream& operator<<(std::ostream& out, const Player& f) {//in this function important to toggle activeness at end of game
+//static bool getGameOver(const Player& f) {
+	//return f.gameOver;
+//}
+std::ostream& operator<<(std::ostream& out, const Player& f) {// need to fix this class for the game values
 	string s;
 	int i = static_cast<int>(f.getSide());
 	switch (i) {
@@ -42,6 +46,7 @@ std::ostream& operator<<(std::ostream& out, const Player& f) {//in this function
 	case 2: s = "left"; break;
 	case 3: s = "right"; break;
 	}
+	//if (f.getGameOver())
 	if (f.isActive() == 1) {
 		out << f.getName() << ": " << s << "(active)" ;
 	}

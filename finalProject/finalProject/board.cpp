@@ -104,7 +104,7 @@ bool Board::turnFaceDown(const Letter & _letter, const Number & _number) const
 	//set n to correct card
 	int n = 5 * _letter + _number;
 	//if past gap iterate down to take account of that
-	if (n > 12) n--;
+	if (n > 12) n++;
 	try {
 		//check range
 		if ((_letter > 4 || _letter < 0) && (_number > 4 || _number < 0)) {
@@ -145,9 +145,9 @@ bool Board::turnFaceDown(const Letter & _letter, const Number & _number) const
 Card * Board::getCard(const Letter & _letter, const Number & _number) const
 {
 	//set to correct n
-	int n = 5 * _letter + _number;
+	int n = 5 * _letter + _number+1;
 	//iterate down if past gap
-	if (n > 12) n--;
+	if (n > 12) { --n; }
 	try {
 		//check if in bounds
 		if (((_letter > 4 || _letter < 0) && (_number > 4 || _number < 0)) || (_letter == 2 && _number == 2)) {
@@ -166,9 +166,9 @@ Card * Board::getCard(const Letter & _letter, const Number & _number) const
 void Board::setCard(const Letter & _letter, const Number & _number, Card* _card) const
 {
 	//set to correct n
-	int n = 5 * _letter + _number;
+	int n = 5 * _letter + _number+1;
 	//iterate down 1 if past gap
-	if (n > 12) n--;
+	if (n > 12) { --n; }
 	try {
 		//check bounds
 		if ((_letter > 4 || _letter < 0) && (_number > 4 || _number < 0)) {
@@ -359,18 +359,36 @@ ostream & operator<<(ostream & _oStream, const Board & _board)
 /*
 int main() {
 	CardDeck _c = CardDeck::make_CardDeck();
-	_c.shuffle();
+	//_c.shuffle();
 	CardDeck * c = &_c;
 	Board _board = Board(c);
-
+	Board::Letter letter = Board::Letter::B;
+	Board::Number number = Board::Number::_5;
 	cout << _board << endl << endl;
-	_board.turnFaceUp(Board::Letter::B, Board::Number::_5);
-	_board.turnFaceUp(Board::Letter::A, Board::Number::_4);
-	_board.turnFaceUp(Board::Letter::C, Board::Number::_2);
-	_board.turnFaceUp(Board::Letter::D, Board::Number::_3);
-	_board.turnFaceUp(Board::Letter::E, Board::Number::_1);
-	_board.turnFaceUp(Board::Letter::A, Board::Number::_5);
+	_board.turnFaceUp(letter, number);
 	cout << _board;
+	letter = Board::Letter::A;
+	number = Board::Number::_1;
+	_board.turnFaceUp(letter, number);
+	cout << _board;
+	 letter = Board::Letter::A;
+	 number = Board::Number::_1;
+	_board.turnFaceDown(letter, number);
+	cout << _board;
+	 letter = Board::Letter::A;
+	 number = Board::Number::_3;
+	_board.turnFaceUp(letter, number);
+	cout << _board;
+	 letter = Board::Letter::E;
+	 number = Board::Number::_5;
+	_board.turnFaceUp(letter, number);
+	cout << _board;
+	 letter = Board::Letter::B;
+	 number = Board::Number::_5;
+	_board.turnFaceUp(letter, number);
+	cout << _board;
+	cout << _board.isFaceUp(letter, number) << " " << _board.isFaceUp(Board::Letter::E, Board::Number::_3) << endl;
 	return 0;
+	
 }
-*/
+//*/
